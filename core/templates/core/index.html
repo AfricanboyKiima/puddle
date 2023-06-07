@@ -1,4 +1,4 @@
-{% extends 'core/base.html'%}
+{% extends 'core/base.html' %}
 <!-- This is the child template and inherits from the base.html which is a parent template template-->
 
 <!--
@@ -8,9 +8,10 @@ block title, it's the one to be displayed in the block title of the parent or di
 understanding that it's our index page that is triggered based on the current definition of our url config file
 at the project level
 -->
-{% block title%}Welcome{% endblock %}
+{% block title %}Welcome{% endblock %}
 
 <!-- This heading here is to be renderd to the parent template base.html which also contains a block content-->
-{% block content%}
+{% block content %}
 <h1>The front page</h1>
-{% endblock%}
+<p>Hello world this is kiima from the democratic republic of Congo and I love working hard for real</p>
+{% endblock %}
