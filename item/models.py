@@ -3,7 +3,7 @@ from django.contrib.auth.models import User#Users come from the inbuilt django u
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255,help_text="Category name")
 
 
     class Meta:#provides us with metadata about our category model
@@ -17,7 +17,7 @@ class Category(models.Model):
 
 class Item(models.Model):
     category = models.ForeignKey(Category,related_name='items', on_delete= models.CASCADE)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255,help_text="Item name")
     description = models.TextField(blank=True, null= True)
     price = models.FloatField()
     is_sold = models.BooleanField(default= False)
