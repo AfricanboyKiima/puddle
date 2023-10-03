@@ -1,4 +1,52 @@
 {% extends 'core/base.html' %}
+<!-- This is the child template and inherits from the base.html which is a parent template template-->
 
+<!--
+This title here is to be rendered in the base template title as well which also has a block title
+the block title in itself receives nothing in it but since we engulfed our title here with the
+block title, it's the one to be displayed in the block title of the parent or displayed while also
+understanding that it's our index page that is triggered based on the current definition of our url config file
+at the project level
+-->
+{% block title %}Welcome{% endblock %}
 
-<h1>The front page</h1>
+<!-- #>< This heading here is to be renderd to the parent template base.html which also contains a block content-->
+{% block content %}
+<!--  -->
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Newest items</h2>
+
+    <div class="grid grid-cols-3 gap-3">
+        {% for item in items%}
+         <div>
+            <a href="{% url 'detail' item.id  %}"> <!-- link to detail of each item -->
+                <div>
+                    <img src="{{ item.image.url }}" class="rounded-t-xl">
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{ item.name }}</h2>
+                    <p class="text-gray-500">Price:{{ item.price }}</p>
+                </div>
+            </a>
+         </div>
+        {% endfor %}
+    </div>
+</div>
+ 
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Categories</h2>
+    <div class="grid grid-cols-3 gap-3">
+        {% for category in categories%}
+        <div>
+            <a href="#">
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{ category.name }}</h2>
+                    <p class="text-gray-500">{{category.items.count}} items</p>
+                </div>
+            </a>
+         </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
